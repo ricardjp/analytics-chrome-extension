@@ -5,18 +5,23 @@ window.onload = function() {
 function updateLastSelected(element) {
     console.log(JSON.stringify(element));
     document.querySelector('#binding').innerHTML = element.binding ? element.binding : '<span class="info">Unknown</span>';
-    document.querySelector('#context').innerHTML = element.context ? element.context : '<span class="info">Unknown</span>';
+    
+    if (element.context) {
+        tableCreate('context', element.context);
+    } else {
+        document.querySelector('#context').innerHTML = '<span class="info">Unknown</span>';    
+    }
     
     if (element.dataLayer) {
-        tableCreate(element.dataLayer);    
+        tableCreate('dataLayer', element.dataLayer);    
     } else {
         document.querySelector('#dataLayer').innerHTML = '<span class="info">Unknown</span>';
     }   
 }
 
 
-function tableCreate(jsonObject) {
-    var dataLayer = document.querySelector('#dataLayer');
+function tableCreate(type, jsonObject) {
+    var wrapper = document.querySelector('#' + type);
     var tbl = document.createElement('table');
     var tbdy = document.createElement('tbody');
     for (var property in jsonObject) {
@@ -34,11 +39,11 @@ function tableCreate(jsonObject) {
     }
     tbl.appendChild(tbdy);
 
-    while (dataLayer.firstChild) {
-        dataLayer.removeChild(dataLayer.firstChild);
+    while (wrapper.firstChild) {
+        wrapper.removeChild(wrapper.firstChild);
     }
     
-    dataLayer.appendChild(tbl)
+    wrapper.appendChild(tbl)
 }
 
 function loadLastSelected() {
