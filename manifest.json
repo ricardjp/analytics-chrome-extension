@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "YP Analytics Toolkit",
+    "description": "This extension ease the process of analytics tagging of YP websites",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "assets/images/icon.png",
+        "default_popup": "popup.html",
+        "default_title": "YP Analytics"
+    },
+    "background": {
+        "scripts": [
+            "assets/javascripts/background.js"
+        ],
+        "persistent": true
+    },
+    "devtools_page": "devtools.html",
+    "content_scripts": [
+        {
+            "matches": ["*://www.yellowpages.ca/*", "*://www.pagesjaunes.ca/*"],
+            "js": ["assets/javascripts/UrlParser.class.js", "assets/javascripts/tagging.js"],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        "assets/stylesheets/tagging.css"
+    ],
+    "permissions": [
+        "tabs",
+        "background",
+        "activeTab",
+        "webRequest",
+        "storage",
+        
+        "https://ajax.googleapis.com/",
+        "*://*.yellowpages.ca/*",
+        "*://*.anametrix.com/*",
+        "*://*.amplitude.com/*"
+    ]
+}

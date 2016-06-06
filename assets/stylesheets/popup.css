@@ -1,0 +1,10 @@
+div#popup {
+    width: 366px;
+    background-image: url('../images/yp-analytics.png');
+    background-repeat: no-repeat;
+    padding-top: 165px;
+}
+
+div#popup-form {
+    padding: 20px;
+}

@@ -1,0 +1,33 @@
+#sidebar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar-separator {
+    height: 24px;
+    background-color: #f1f1f1;
+    border-color: #ddd;
+    display: flex;
+    align-items: center;
+    background-color: #ddd;
+    padding: 0 5px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: rgb(50, 50, 50);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 16px;
+}
+
+.info {
+    text-align: center;
+    font-style: italic;
+    padding: 6px;
+    color: #888;
+    line-height: 16px;
+    width: 100%;
+}

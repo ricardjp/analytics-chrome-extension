@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="assets/stylesheets/common.css" rel="stylesheet" type="text/css" />
+        <link href="assets/stylesheets/panel.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="events">
+	        <table>
+                <colgroup span="6">
+                    <col width="15%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="15%" />
+                    <col width="50%" />
+                    <col width="0" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Event type</th>
+                        <th>Binding</th>
+                        <th>Tracker</th>
+                        <th>Origin</th>
+                        <th class="data-cell">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="event-details"></div>
+        <script src="assets/javascripts/AnalyticsEvent.class.js"></script>
+        <script src="assets/javascripts/UrlParser.class.js"></script>
+        <script src="vendor/assets/javascripts/moment.js"></script>
+	    <script src="assets/javascripts/panel.js"></script>
+    </body>
+</html>

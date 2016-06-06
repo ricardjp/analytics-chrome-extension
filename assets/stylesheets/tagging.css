@@ -1,0 +1,25 @@
+[data-analytics], [data-analytics-placeholder] {
+    position: relative;
+}
+
+a[data-analytics], a[data-analytics-placeholder] {
+    display: block;
+    display: inline-block;
+}
+
+[data-analytics]:before,
+[data-analytics]:after,
+[data-analytics-placeholder]:before,
+[data-analytics-placeholder]:after {
+    z-index:100;
+    content:"";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: chartreuse;
+    opacity: 0.5;
+    border: 1px solid green;
+}

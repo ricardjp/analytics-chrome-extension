@@ -1,0 +1,28 @@
+#events {
+    width: 60%;
+}
+
+#event-details {
+    width: 40%;
+    position: absolute;
+    top: 0;
+    left: 60%;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: #eee;
+    border-left: 3px double #bbb;
+}
+
+#events td, #events th {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#events table {
+    table-layout: fixed;
+}
+
+.data-cell {
+    display: none;
+}
