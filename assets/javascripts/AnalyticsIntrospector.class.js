@@ -2,7 +2,7 @@ function AnalyticsIntrospector(node) {
     "use strict";
     
     function findAnalyticsBinding() {
-        return node.attributes['data-analytics-identifier'] ? node.attributes['data-analytics-identifier'].value : undefined;
+        return node.attributes['data-analytics-binding'] ? node.attributes['data-analytics-binding'].value : undefined;
     }
     
     function findAnalyticsContext() {
