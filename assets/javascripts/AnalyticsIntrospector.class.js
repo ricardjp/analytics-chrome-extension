@@ -1,26 +1,20 @@
 function AnalyticsIntrospector(node) {
     "use strict";
     
-    function findAnalyticsBinding() {
-        return node.attributes['data-analytics-binding'] ? node.attributes['data-analytics-binding'].value : undefined;
-    }
-    
-    function findAnalyticsContext() {
-        return node.attributes['data-analytics-context'] ? JSON.parse(node.attributes['data-analytics-context'].value) : undefined;
-    }
-    
-    function findAnalyticsDataLayer() {
-        return node.attributes['data-analytics'] ? JSON.parse(node.attributes['data-analytics'].value) : undefined;
+    function retrieveAttribute(attributeName) {
+        var analyticsNode = node.closest('[' + attributeName + ']');
+        if (analyticsNode) {
+            return analyticsNode.attributes[attributeName] ? JSON.parse(analyticsNode.attributes[attributeName].value) : undefined;            
+        }
     }
     
     function init() {
         return {
-            binding: findAnalyticsBinding(),
-            context: findAnalyticsContext(),
-            dataLayer: findAnalyticsDataLayer()
+            binding: retrieveAttribute('data-analytics-binding'),
+            context: retrieveAttribute('data-analytics-context'),
+            dataLayer: retrieveAttribute('data-analytics')
         };
     }
     
     return init();
-    
 }
