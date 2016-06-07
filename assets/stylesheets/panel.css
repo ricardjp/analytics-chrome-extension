@@ -1,9 +1,15 @@
+#toolbar {
+    border-bottom: 1px solid rgb(64%, 64%, 64%);
+    padding: 4px;
+    position: relative;
+}
+
 #events {
     width: 60%;
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
+    top: 33px;
     bottom: 0;
     overflow: auto;
     box-sizing: border-box;
@@ -12,7 +18,7 @@
 #event-details {
     width: 40%;
     position: absolute;
-    top: 0;
+    top: 33px;
     left: 60%;
     right: 0;
     bottom: 0;
@@ -33,4 +39,18 @@
 
 .data-cell {
     display: none;
+}
+
+.clear-toolbar-item.toolbar-glyph {
+    -webkit-mask-position: -64px 0;
+}
+
+.toolbar-glyph {
+    -webkit-mask-image: url('../images/chrome-icons.png');
+    -webkit-mask-size: 352px 168px;
+    background-color: #5a5a5a;
+    width: 28px;
+    height: 24px;
+    flex: none;
+    transform: translateX(-2px);
 }

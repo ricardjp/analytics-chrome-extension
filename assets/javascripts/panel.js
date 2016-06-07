@@ -73,6 +73,24 @@ function appendEventToTable(event) {
 function clickHandler(row) {
     return function() {
         var data = row.querySelector('.data-cell').innerHTML;
+        
+        var selectedRows = document.querySelectorAll('tr.selected');
+        for (var i = 0; i < selectedRows.length; ++i) {
+            selectedRows[i].className = '';
+        }
+        
+        row.className = 'selected';
         createEventPanel(JSON.parse(data));
     }
 }
+
+function init() {
+    document.querySelector('#clear-events').addEventListener('click', clearHandler);
+}
+
+function clearHandler() {
+    document.querySelector('#events tbody').innerHTML = '';
+    document.querySelector('#event-details').innerHTML = '';
+}
+
+init();
