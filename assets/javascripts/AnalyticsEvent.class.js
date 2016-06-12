@@ -1,58 +1,30 @@
-var AnalyticsEvent = (function() {
+class AnalyticsEvent {
     
-    function AnalyticsEvent(analyticsEvent, url) {
+    constructor(analyticsEvent) {
         this.analyticsEvent = analyticsEvent;
-        this.url = url;
     }
     
-    AnalyticsEvent.prototype.getTimestamp = function() {
+    getTimestamp() {
         return moment(this.analyticsEvent.timestamp).format("YYYY-MM-DDTHH:mm:ss");
     }
     
-    AnalyticsEvent.prototype.getOrigin = function() {
+    getOrigin() {
         return this.analyticsEvent.origin;
     }
     
-    AnalyticsEvent.prototype.getData = function() {
-        return this.url.query;
+    getData() {
+        return {};
     }
     
-    AnalyticsEvent.prototype.getType = function() {
-        if (this.url.query.hasOwnProperty('g.a') && this.url.query['g.a'] === 'pv') {
-            return 'page-view';
-        } else if (this.url.query.hasOwnProperty('pv.s.n') && this.url.query['pv.s.n'] === 'link') {
-            return 'click';
-        } else if (this.url.query.hasOwnProperty('_ev') && this.url.query['_ev'] === 'link') {
-            return 'click';
-        } else if (this.url.query.hasOwnProperty('_ev') && this.url.query['_ev'] === 'view') {
-            return 'page-view';
-        } else {
-            return 'other';
-        }
+    getType() {
+        return 'Other';
     }
     
-    AnalyticsEvent.prototype.getTracker = function() {
-        if (this.url.hostname.match(/\.anametrix\.com$/)) {
-            return 'Anametrix';
-        } else if (this.url.hostname.match(/^ypghits\.yellowpages\.ca$/)) {
-            return 'YP Analytics';
-        } else if (this.url.hostname.match(/^api\.amplitude\.com$/)) {
-            return 'Amplitude';
-        } else {
-            return 'Unknown';
-        }
+    getTracker() {
+        return this.analyticsEvent.tracker;
     }
     
-    AnalyticsEvent.prototype.getBinding = function() {
-        if (this.url.query.hasOwnProperty('pv.lc.n')) {
-            return this.url.query['pv.lc.n'];
-        } else if (this.url.query.hasOwnProperty('pv.p.g.n')) {
-            return this.url.query['pv.p.g.n'];
-        } else {
-            return 'unknown';
-        }
+    getBinding() {
+        return 'Unknown';
     }
-    
-    return AnalyticsEvent;
-    
-})();
+}

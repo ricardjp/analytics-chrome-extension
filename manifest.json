@@ -10,14 +10,15 @@
     },
     "background": {
         "scripts": [
-            "assets/javascripts/background.js"
+            "assets/javascripts/background.js",
+            "assets/javascripts/UrlParser.class.js"
         ],
         "persistent": true
     },
     "devtools_page": "devtools.html",
     "content_scripts": [
         {
-            "matches": ["*://www.yellowpages.ca/*", "*://www.pagesjaunes.ca/*"],
+            "matches": ["*://*.yellowpages.ca/*", "*://*.pagesjaunes.ca/*"],
             "js": ["assets/javascripts/UrlParser.class.js", "assets/javascripts/tagging.js"],
             "run_at": "document_start"
         }
@@ -32,7 +33,6 @@
         "webRequest",
         "storage",
         
-        "https://ajax.googleapis.com/",
         "*://*.yellowpages.ca/*",
         "*://*.anametrix.com/*",
         "*://*.amplitude.com/*"
