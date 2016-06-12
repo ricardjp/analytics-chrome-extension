@@ -3,14 +3,13 @@
 }
 
 a[data-analytics], a[data-analytics-placeholder] {
-    display: block;
     display: inline-block;
 }
 
-[data-analytics]:before,
-[data-analytics]:after,
-[data-analytics-placeholder]:before,
-[data-analytics-placeholder]:after {
+:not(form)[data-analytics]:before,
+:not(form)[data-analytics]:after,
+:not(form)[data-analytics-placeholder]:before,
+:not(form)[data-analytics-placeholder]:after {
     z-index:100;
     content:"";
     display: block;
@@ -22,4 +21,11 @@ a[data-analytics], a[data-analytics-placeholder] {
     background-color: chartreuse;
     opacity: 0.5;
     border: 1px solid green;
+}
+
+form[data-analytics] input,
+form[data-analytics-placeholder] input {
+    background-color: chartreuse !important;
+    opacity: 0.5 !important;
+    border: 1px solid green !important;
 }
