@@ -1,31 +1,9 @@
 [data-analytics], [data-analytics-placeholder] {
-    position: relative;
-}
-
-a[data-analytics], a[data-analytics-placeholder] {
-    display: inline-block;
-}
-
-:not(form)[data-analytics]:before,
-:not(form)[data-analytics]:after,
-:not(form)[data-analytics-placeholder]:before,
-:not(form)[data-analytics-placeholder]:after {
-    z-index:100;
-    content:"";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: chartreuse;
-    opacity: 0.5;
-    border: 1px solid green;
+    background-color: rgba(127, 255, 0, 0.7) !important;
+    border: 3px solid chartreuse !important;
 }
 
 form[data-analytics] input,
 form[data-analytics-placeholder] input {
-    background-color: chartreuse !important;
-    opacity: 0.5 !important;
-    border: 1px solid green !important;
+    border: 3px solid chartreuse !important;
 }
