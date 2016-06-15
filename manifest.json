@@ -10,8 +10,7 @@
     },
     "background": {
         "scripts": [
-            "assets/javascripts/background.js",
-            "assets/javascripts/UrlParser.class.js"
+            "bundles/background.js"
         ],
         "persistent": true
     },
@@ -19,7 +18,7 @@
     "content_scripts": [
         {
             "matches": ["*://*.yellowpages.ca/*", "*://*.pagesjaunes.ca/*"],
-            "js": ["assets/javascripts/UrlParser.class.js", "assets/javascripts/tagging.js"],
+            "js": ["bundles/tagging.js"],
             "run_at": "document_start"
         }
     ],

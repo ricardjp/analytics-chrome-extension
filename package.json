@@ -1,0 +1,24 @@
+{
+  "name": "analytics-chrome-extension",
+  "description": "YP Analytics Toolkit - Google Chrome extension which ease the process of analytics tagging of YP websites",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ricardjp/analytics-chrome-extension"
+  },
+  "author": {
+    "name": "Jean-Philippe Ricard"
+  },
+  "dependencies": {
+    "glob-to-regexp": "^0.1.0",
+    "moment": "^2.13.0"
+  },
+  "scripts": {
+    "postinstall": "node scripts/bundles.js"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1"
+  }
+}

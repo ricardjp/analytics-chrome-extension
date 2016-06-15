@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 class AnalyticsEvent {
     
     constructor(analyticsEvent) {
@@ -28,3 +30,5 @@ class AnalyticsEvent {
         return 'Unknown';
     }
 }
+
+module.exports = AnalyticsEvent;

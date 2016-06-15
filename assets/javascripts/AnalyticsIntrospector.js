@@ -1,5 +1,4 @@
 function AnalyticsIntrospector(node) {
-    "use strict";
     
     function retrieveAttribute(attributeName) {
         var analyticsNode = node.closest('[' + attributeName + ']');
@@ -18,3 +17,5 @@ function AnalyticsIntrospector(node) {
     
     return init();
 }
+
+module.exports = AnalyticsIntrospector;

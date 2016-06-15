@@ -1,3 +1,5 @@
+const AnalyticsEvent = require('./AnalyticsEvent');
+
 class AnalyticsEventPixelTracker extends AnalyticsEvent {
     
     constructor(analyticsEvent) {
@@ -36,3 +38,5 @@ class AnalyticsEventPixelTracker extends AnalyticsEvent {
     }
     
 }
+
+module.exports = AnalyticsEventPixelTracker;

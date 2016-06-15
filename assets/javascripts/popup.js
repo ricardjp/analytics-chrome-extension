@@ -1,15 +1,16 @@
+const urlParser = require('url');
 
 var currentTabUrl;
 
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    currentTabUrl = new UrlParser(tabs[0].url).parseUrl();
+    currentTabUrl = urlParser.parse(tabs[0].url, true);
     document.querySelector('#current-domain').innerText = currentTabUrl.hostname;
     chrome.storage.local.get('domains', function(result) {
         var domains = result['domains'];
         if (Array.isArray(domains) && domains.indexOf(currentTabUrl.hostname) !== -1) {
             document.querySelector('input').checked = true;
         }
-    });    
+    });
 });
 
 document.querySelector('input').onclick = toggleStylesheet;

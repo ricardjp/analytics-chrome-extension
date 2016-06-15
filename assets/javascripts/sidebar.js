@@ -1,5 +1,7 @@
 (function() {
     
+    const AnalyticsIntrospector = require('./AnalyticsIntrospector');
+    
     function updateLastSelected(element) {
         document.querySelector('#binding').innerHTML = element.binding ? element.binding : '<span class="info">Unknown</span>';
         
@@ -48,12 +50,9 @@
 
     function loadLastSelected() {
         chrome.devtools.inspectedWindow.eval("(" + AnalyticsIntrospector.toString() + ")($0)", function (result, isException) {
-        if (!isException && result !== null) {
-            //include tabId so that we are able to differentiate between elements from current and other tab
-            //result.tabId = chrome.devtools.inspectedWindow.tabId;
-
-            updateLastSelected(result);
-        }
+            if (!isException && result !== null) {
+                updateLastSelected(result);
+            }
         });
     }
     

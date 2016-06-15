@@ -1,3 +1,5 @@
+const AnalyticsEvent = require('./AnalyticsEvent');
+
 class AnalyticsEventAmplitude extends AnalyticsEvent {
     
     constructor(analyticsEvent) {
@@ -49,3 +51,5 @@ class AnalyticsEventAmplitude extends AnalyticsEvent {
     }
     
 }
+
+module.exports = AnalyticsEventAmplitude;

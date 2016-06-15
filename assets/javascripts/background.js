@@ -1,67 +1,69 @@
-(function(chrome) {
+const urlParser = require('url');
+const globber = require('glob-to-regexp');
 
-    var trackers = [
-        {
-            name: 'Anametrix',
-            mask: 'http://*.anametrix.com/*',
-            
+const trackers = [
+    {
+        name: 'Anametrix',
+        mask: '*://*.anametrix.com/*', 
+    },
+    {
+        name: 'YP Analytics',
+        mask: '*://ypghits.yellowpages.ca/*'
+    },
+    {
+        name: 'Amplitude',
+        mask: '*://api.amplitude.com/*'
+    }
+];
+
+var ports = [];
+chrome.runtime.onConnect.addListener(function(port) {
+if (port.name === 'analytics') {
+    ports.push(port);
+    port.onDisconnect.addListener(function() {
+        var i = ports.indexOf(port);
+        if (i !== -1) {
+            ports.splice(i, 1);
         }
-    ];
-
-    var ports = [];
-    chrome.runtime.onConnect.addListener(function(port) {
-    if (port.name === 'analytics') {
-        ports.push(port);
-        port.onDisconnect.addListener(function() {
-            var i = ports.indexOf(port);
-            if (i !== -1) {
-                ports.splice(i, 1);
-            }
-        });
-    } 
     });
+} 
+});
 
-    function notifyAnalyticsEvent(analyticsEvent) {
-        ports.forEach(function(port) {
-            port.postMessage(analyticsEvent); 
-        });
-    }
-    
-    function findTracker(urlObject) {
-        if (urlObject.hostname.match(/\.anametrix\.com$/)) {
-            return 'Anametrix';
-        } else if (urlObject.hostname.match(/^ypghits\.yellowpages\.ca$/)) {
-            return 'YP Analytics';
-        } else if (urlObject.hostname.match(/^api\.amplitude\.com$/)) {
-            return 'Amplitude';
-        } else {
-            return 'Unknown';
+function notifyAnalyticsEvent(analyticsEvent) {
+    ports.forEach(function(port) {
+        port.postMessage(analyticsEvent); 
+    });
+}
+
+function findTracker(urlObject) {
+    for (var i = 0; i < trackers.length; i++) {
+        var tracker = trackers[i];
+        var expression = globber(tracker.mask);
+        if (expression.test(urlObject.href)) {
+            return tracker.name;
         }
     }
+    return 'Unknown';
+}
 
-    // TODO make urls configurable
-    chrome.webRequest.onBeforeRequest.addListener(
-            function(details) {
-                chrome.tabs.get(parseInt(details.tabId), function(tab) {
-                    
-                    var urlObject = new UrlParser(details.url).parseUrl(); 
-                    
-                    notifyAnalyticsEvent({
-                        timestamp: details.timeStamp,
-                        url: urlObject,
-                        origin: tab.url,
-                        requestBody: details.requestBody,
-                        tracker: findTracker(urlObject)
-                    });
+var trackerMasks = [];
+for (var i = 0; i < trackers.length; i++) {
+    trackerMasks.push(trackers[i].mask);
+}
+chrome.webRequest.onBeforeRequest.addListener(
+        function(details) {
+            chrome.tabs.get(parseInt(details.tabId), function(tab) {
+                
+                var urlObject = urlParser.parse(details.url, true);
+                
+                notifyAnalyticsEvent({
+                    timestamp: details.timeStamp,
+                    url: urlObject,
+                    origin: tab.url,
+                    requestBody: details.requestBody,
+                    tracker: findTracker(urlObject)
                 });
-            },
-            {
-                urls: [
-                    "http://*.anametrix.com/*",
-                    "http://ypghits.yellowpages.ca/*",
-                    "http://*.amplitude.com/*"
-                ]
-            },
-            ['requestBody']);
-
-})(chrome);
+            });
+        },
+        { urls: trackerMasks },
+        ['requestBody']);
