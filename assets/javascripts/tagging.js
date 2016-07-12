@@ -1,35 +1,24 @@
 (function() {
 
     const urlParser = require('url');
+    const StylesheetService = require('./StylesheetService');
+    const stylesheetService = new StylesheetService();
+    
+    const stylesheet = {
+        id: 'yp-analytics-tagging',
+        url: 'assets/stylesheets/tagging.css'
+    };
 
     var url = urlParser.parse(document.location.href, true);
     chrome.storage.local.get('domains', function(result) {
         if (result['domains'].indexOf(url.hostname) !== -1) {
-            loadCss('assets/stylesheets/tagging.css');
+            stylesheetService.toggle(stylesheet);
         }
     });
 
     chrome.runtime.onMessage.addListener(
         function(request, sender, sendResponse) {
-            if (request.analyticsTagging) {
-                loadCss('assets/stylesheets/tagging.css');
-            } else {
-                unloadCss('assets/stylesheets/tagging.css');
-            }
+            stylesheetService.toggle(stylesheet, request.analyticsTagging);
         });
-    
-    function loadCss(file) {
-        var link = document.createElement("link");
-        link.href = chrome.extension.getURL(file);
-        link.id = file;
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        document.getElementsByTagName("head")[0].appendChild(link);
-    }
-
-    function unloadCss(file) {
-        var cssNode = document.getElementById(file);
-        cssNode && cssNode.parentNode.removeChild(cssNode);
-    }
     
 })();

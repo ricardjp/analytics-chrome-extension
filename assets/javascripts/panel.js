@@ -4,11 +4,13 @@
     const AnalyticsEventPixelTracker = require('./AnalyticsEventPixelTracker');
     const AnalyticsEventAmplitude = require('./AnalyticsEventAmplitude');
 
-    var port = chrome.runtime.connect({name: 'analytics'});
+    var port = chrome.runtime.connect({ name: 'analytics' });
 
     port.onMessage.addListener(function(message) {
-        var event = createEvent(message);
-        appendEventToTable(event);  
+        if (message.tabId === chrome.devtools.inspectedWindow.tabId) {
+            var event = createEvent(message);
+            appendEventToTable(event);            
+        }
     });
 
     function createEvent(message) {

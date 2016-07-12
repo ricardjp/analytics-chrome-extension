@@ -11,12 +11,12 @@ const bundles = [
         asset: './assets/javascripts/panel.js'
     },
     {
-        name: 'popup',
-        asset: './assets/javascripts/popup.js'
+        name: 'sidebar-analytics',
+        asset: './assets/javascripts/sidebar-analytics.js'
     },
     {
-        name: 'sidebar',
-        asset: './assets/javascripts/sidebar.js'
+        name: 'sidebar-pageview',
+        asset: './assets/javascripts/sidebar-pageview.js'
     },
     {
         name: 'devtools',
