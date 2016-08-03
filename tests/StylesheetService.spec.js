@@ -6,7 +6,7 @@ const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 var expect = chai.expect;
 
-var StylesheetService = require('../assets/javascripts/StylesheetService');
+var StylesheetService = require('../assets/javascripts/service/StylesheetService');
 var urlParser = require('url');
 
 describe('StylesheetService', function() {

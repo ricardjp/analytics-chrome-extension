@@ -1,6 +1,6 @@
 const urlParser = require('url');
 const globber = require('glob-to-regexp');
-const TaggingService = require('./TaggingService');
+const TaggingService = require('./service/TaggingService');
 
 const taggingService = new TaggingService();
 

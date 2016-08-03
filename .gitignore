@@ -1,2 +1,4 @@
 node_modules/
-bundles/
+certificate/
+build/
+dist/

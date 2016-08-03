@@ -5,7 +5,7 @@ const sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 var expect = chai.expect;
 
-var TaggingService = require('../assets/javascripts/TaggingService');
+var TaggingService = require('../assets/javascripts/service/TaggingService');
 var urlParser = require('url');
 
 describe('TaggingService', function() {

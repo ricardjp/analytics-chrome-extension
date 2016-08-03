@@ -1,7 +1,7 @@
 (function() {
     
-    const AnalyticsIntrospector = require('./AnalyticsIntrospector');
-    const AnalyticsRendererService = require('./AnalyticsRendererService');
+    const AnalyticsIntrospector = require('./introspection/AnalyticsIntrospector');
+    const AnalyticsRendererService = require('./service/AnalyticsRendererService');
     const unknownMarkup = '<span class="info">Unknown</span>';
     
     function updateLastSelected(element) {

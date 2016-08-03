@@ -1,7 +1,7 @@
 (function() {
 
     const urlParser = require('url');
-    const StylesheetService = require('./StylesheetService');
+    const StylesheetService = require('./service/StylesheetService');
     const stylesheetService = new StylesheetService();
     
     const stylesheet = {

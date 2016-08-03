@@ -1,6 +1,6 @@
 (function() {
 
-    const AnalyticsRendererService = require('./AnalyticsRendererService');
+    const AnalyticsRendererService = require('./service/AnalyticsRendererService');
     
     var port = chrome.runtime.connect({ name: 'pageView' });
     port.onMessage.addListener(function(message) {

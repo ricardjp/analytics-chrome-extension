@@ -21,6 +21,8 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-crx-pack": "^1.0.1",
     "jsdom": "^9.4.1",
     "jsdom-global": "^2.0.0",
     "sinon": "^1.17.4",

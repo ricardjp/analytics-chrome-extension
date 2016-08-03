@@ -1,8 +1,8 @@
 (function() {
     
-    const AnalyticsEvent = require('./AnalyticsEvent');
-    const AnalyticsEventPixelTracker = require('./AnalyticsEventPixelTracker');
-    const AnalyticsEventAmplitude = require('./AnalyticsEventAmplitude');
+    const AnalyticsEvent = require('./event/AnalyticsEvent');
+    const AnalyticsEventPixelTracker = require('./event/AnalyticsEventPixelTracker');
+    const AnalyticsEventAmplitude = require('./event/AnalyticsEventAmplitude');
 
     var port = chrome.runtime.connect({ name: 'analytics' });
 
