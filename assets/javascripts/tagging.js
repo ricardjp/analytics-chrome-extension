@@ -11,7 +11,7 @@
 
     var url = urlParser.parse(document.location.href, true);
     chrome.storage.local.get('domains', function(result) {
-        if (result['domains'].indexOf(url.hostname) !== -1) {
+        if (result['domains'] !== undefined && result['domains'].indexOf(url.hostname) !== -1) {
             stylesheetService.toggle(stylesheet);
         }
     });
