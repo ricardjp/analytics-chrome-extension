@@ -11,12 +11,12 @@
   "author": {
     "name": "Jean-Philippe Ricard"
   },
+  "scripts": {
+    "install": "gulp"
+  },
   "dependencies": {
     "glob-to-regexp": "^0.1.0",
     "moment": "^2.13.0"
-  },
-  "scripts": {
-    "postinstall": "node scripts/bundles.js"
   },
   "devDependencies": {
     "browserify": "^13.0.1",

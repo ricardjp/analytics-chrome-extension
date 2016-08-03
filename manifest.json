@@ -2,6 +2,11 @@
     "manifest_version": 2,
     "name": "YP-Analytics",
     "description": "This extension ease the process of analytics tagging of YP websites",
+    "icons": {
+        "16": "assets/images/icon16.png",
+        "48": "assets/images/icon48.png",
+        "128": "assets/images/icon128.png"
+    },
     "version": "1.0",
     "page_action": {
         "default_icon": "assets/images/icon-normal.png",
