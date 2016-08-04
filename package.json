@@ -12,7 +12,8 @@
     "name": "Jean-Philippe Ricard"
   },
   "scripts": {
-    "install": "gulp"
+    "install": "gulp",
+    "test": "gulp test"
   },
   "dependencies": {
     "glob-to-regexp": "^0.1.0",
@@ -23,6 +24,7 @@
     "chai": "^3.5.0",
     "gulp-browserify": "^0.5.1",
     "gulp-crx-pack": "^1.0.1",
+    "gulp-mocha": "^3.0.0",
     "jsdom": "^9.4.1",
     "jsdom-global": "^2.0.0",
     "sinon": "^1.17.4",
