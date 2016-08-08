@@ -1,7 +1,7 @@
 (function(chrome) {
     
     chrome.devtools.panels.create(
-        "Analytics",
+        "Analytics Events",
         "assets/images/icon.png",
         "panel.html");
 
