@@ -14,6 +14,10 @@ const trackers = [
         mask: '*://ypghits.yellowpages.ca/*'
     },
     {
+        name: 'YP Analytics',
+        mask: '*://testhits.yellowpages.ca/*'
+    },
+    {
         name: 'Amplitude',
         mask: '*://api.amplitude.com/*'
     }
